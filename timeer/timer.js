@@ -78,7 +78,14 @@ function timer(){
     const interval = setInterval(()=>{
       sec = --sec;
       document.querySelector('.seconds__block').innerHTML = sec
+      console.log(sec);
+      if(sec === 0){
+        clearInterval(interval)
+      }
     }, 500)
+    if(sec === 0){
+      clearInterval(interval)
+    }
     btnStop.addEventListener('click', e =>{
       clearInterval(interval)
       console.log(sec)
