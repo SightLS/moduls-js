@@ -1,5 +1,12 @@
 
 function timer(){
+  const sound = {
+    finishSound: new Howl({
+      src: ['sounds/bmth.mp3']
+    })
+  }
+
+
   class Timer{
     constructor(timer, time, maxTime){
       this.timer = timer;
@@ -87,6 +94,8 @@ function timer(){
       document.querySelector('.seconds__block').innerHTML = seconds.timer
 
       if(seconds.timer === 0 && minutes.timer ===0 && hours.timer === 0){
+        sound.finishSound.play()
+        btnStrat.removeAttribute("disabled")
         clearInterval(interval)
       }
       if(minutes.timer > 0 && seconds.timer === 0){
@@ -103,6 +112,7 @@ function timer(){
       }
     }, 1)
     btnStop.addEventListener('click', e =>{
+      btnStrat.removeAttribute("disabled")
       clearInterval(interval)
     })
 
@@ -111,9 +121,14 @@ function timer(){
     if(seconds.timer === 0 & minutes.timer === 0 & hours.timer === 0){
       alert('задайте время время')
     }else{
+      btnStrat.setAttribute("disabled", "disabled")
       counter();
+
     }
   })
+
+
+
 }
 
 
