@@ -6,21 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script type="module" src="./js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js" integrity="sha512-L6Z/YtIPQ7eU3BProP34WGU5yIRk7tNHk7vaC2dB1Vy1atz6wl9mCkTPPZ2Rn1qPr+vY2mZ9odZLdGYuaBk7dQ==" crossorigin="anonymous"></script>
+
 </head>
 <body>
-  <form id="datecalc">
-    <h3>Калькулятор дат</h3>
-    <label>
+  <header>
+    <button class="calc-open">калькулятор</button>
+    <button class="timer-open">таймер</button>
+  </header>
+  <main>
+    <form id="datecalc">
+      <h3>Калькулятор дат</h3>
+      <label>
         <strong>Первая дата:</strong>
         <input type="date" name="firstDate" />
-    </label>
-    <label>
+      </label>
+      <label>
         <strong>Вторая дата:</strong>
         <input type="date" name="secondDate" />
-    </label>
-    <button type="submit">Расчитать промежуток</button>
-    <p id="datecalc__result"></p>
-  </form>
+      </label>
+      <button type="submit">Расчитать промежуток</button>
+      <p id="datecalc__result"></p>
+    </form>
+    <div class="timer" style="display: none">
 
-</body>
+    </div>
+  </main>
+  </body>
 </html>
