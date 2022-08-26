@@ -23,5 +23,5 @@ btnStrat.addEventListener('click', e =>{
   counter();
 })
 btnStop.addEventListener('click', e =>{
-  counter(stop)
+  // counter(stop)
 })
