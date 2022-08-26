@@ -9,16 +9,16 @@ const btnStrat = document.querySelector('.start');
 const btnStop = document.querySelector('.stop')
 
 
-function counter(callback){
+function counter(){
   const interval = setInterval(()=>{
     console.log(sec)
   }, 1000)
-  callback()
+  // callback()
 }
-
-const stop = ()=>{
-  return clearInterval(interval)
-}
+//
+// const stop = ()=>{
+//   return clearInterval(interval)
+// }
 btnStrat.addEventListener('click', e =>{
   counter();
 })

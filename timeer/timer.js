@@ -52,7 +52,9 @@ function timer(){
   seconds.clickUp();
 
 
+
   const btnStart = '<button class="start">старт!</button>'
+
   const btnstop = '<button class="stop">stop!</button>'
 
   document.querySelector('.timer').insertAdjacentHTML('beforeend', btnStart);
