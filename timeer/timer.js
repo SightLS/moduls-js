@@ -21,9 +21,12 @@ function timer(){
       const btnDown = document.querySelector(`.${this.time}__down`)
 
       btnUp.addEventListener('click', (e) =>{
+
         if(this.timer < this.maxTime){
           this.timer = this.timer + 1
           document.querySelector(`.${this.time}__block`).innerText = this.timer
+          sec = this.timer
+          console.log(sec)
         }
 
 
@@ -44,6 +47,9 @@ function timer(){
   const hours = new Timer(0, 'hours', 24)
   const minutes = new Timer(0, 'minutes', 60)
   const seconds = new Timer(0, 'seconds', 60)
+
+
+
   hours.render();
   minutes.render();
   seconds.render();
@@ -51,14 +57,37 @@ function timer(){
   minutes.clickUp();
   seconds.clickUp();
 
-
-
   const btnStart = '<button class="start">старт!</button>'
-
   const btnstop = '<button class="stop">stop!</button>'
 
   document.querySelector('.timer').insertAdjacentHTML('beforeend', btnStart);
   document.querySelector('.timer').insertAdjacentHTML('beforeend', btnstop);
+
+
+
+
+
+
+  let sec
+
+  const btnStrat = document.querySelector('.start');
+  const btnStop = document.querySelector('.stop')
+
+
+  function counter(){
+    const interval = setInterval(()=>{
+      sec = --sec;
+      document.querySelector('.seconds__block').innerHTML = sec
+    }, 500)
+    btnStop.addEventListener('click', e =>{
+      clearInterval(interval)
+      console.log(sec)
+    })
+
+  }
+  btnStrat.addEventListener('click', e =>{
+    counter();
+  })
 
 }
 
