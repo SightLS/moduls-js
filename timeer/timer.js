@@ -25,8 +25,6 @@ function timer(){
         if(this.timer < this.maxTime){
           this.timer = this.timer + 1
           document.querySelector(`.${this.time}__block`).innerText = this.timer
-          sec = this.timer
-          console.log(sec)
         }
 
 
@@ -67,32 +65,39 @@ function timer(){
 
 
 
-
-  let sec
-
   const btnStrat = document.querySelector('.start');
   const btnStop = document.querySelector('.stop')
 
 
   function counter(){
     const interval = setInterval(()=>{
-      sec = --sec;
-      document.querySelector('.seconds__block').innerHTML = sec
-      console.log(sec);
-      if(sec === 0){
+      console.log(hours.timer);
+      seconds.timer = --seconds.timer
+      document.querySelector('.seconds__block').innerHTML = seconds.timer
+
+      if(seconds.timer === 0 && minutes.timer ===0 && hours.timer === 0){
         clearInterval(interval)
       }
-    }, 500)
-    if(sec === 0){
-      clearInterval(interval)
-    }
+      if(minutes.timer > 0 && seconds.timer === 0){
+        minutes.timer = --minutes.timer;
+        seconds.timer = 60
+        document.querySelector('.minutes__block').innerHTML = minutes.timer
+      }
+      if(hours.timer > 0 && minutes.timer === 0){
+        minutes.timer = 60
+        hours.timer = --hours.timer;
+
+        seconds.timer = 60
+        document.querySelector('.hours__block').innerHTML = hours.timer
+      }
+    }, 2)
     btnStop.addEventListener('click', e =>{
       clearInterval(interval)
-      console.log(sec)
     })
 
   }
   btnStrat.addEventListener('click', e =>{
+    // btnStrat.setAttribute("disabled", "disabled")
     counter();
   })
 
