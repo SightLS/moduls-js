@@ -9,7 +9,11 @@ function timer(){
     render(){
       const kek =  `
          <div class="${this.time}">
+         <div class="screen" style="display: flex; gap: 10px">
             <p class="${this.time}__block">${this.timer}</p>
+            <p>${this.time}</p>
+         </div>
+
             <button class="${this.time}__up up">up</button>
             <button class="${this.time}__down down">down</button>
         </div>
@@ -55,11 +59,11 @@ function timer(){
   minutes.clickUp();
   seconds.clickUp();
 
-  const btnStart = '<button class="start">старт!</button>'
-  const btnstop = '<button class="stop">stop!</button>'
+  const btnStartIn = '<button class="start">старт!</button>'
+  const btnStopIn = '<button class="stop">stop!</button>'
 
-  document.querySelector('.timer').insertAdjacentHTML('beforeend', btnStart);
-  document.querySelector('.timer').insertAdjacentHTML('beforeend', btnstop);
+  document.querySelector('.timer').insertAdjacentHTML('beforeend', btnStartIn);
+  document.querySelector('.timer').insertAdjacentHTML('beforeend', btnStopIn);
 
 
 
@@ -71,7 +75,14 @@ function timer(){
 
   function counter(){
     const interval = setInterval(()=>{
-      console.log(hours.timer);
+
+      if(seconds.timer === 0 && minutes.timer > 0){
+        minutes.timer = --minutes.timer;
+        seconds.timer = 59
+        document.querySelector('.minutes__block').innerHTML = minutes.timer
+
+      }
+
       seconds.timer = --seconds.timer
       document.querySelector('.seconds__block').innerHTML = seconds.timer
 
@@ -80,27 +91,29 @@ function timer(){
       }
       if(minutes.timer > 0 && seconds.timer === 0){
         minutes.timer = --minutes.timer;
-        seconds.timer = 60
+        seconds.timer = 59
         document.querySelector('.minutes__block').innerHTML = minutes.timer
       }
       if(hours.timer > 0 && minutes.timer === 0){
-        minutes.timer = 60
+        minutes.timer = 59
         hours.timer = --hours.timer;
 
-        seconds.timer = 60
+        seconds.timer = 59
         document.querySelector('.hours__block').innerHTML = hours.timer
       }
-    }, 2)
+    }, 1)
     btnStop.addEventListener('click', e =>{
       clearInterval(interval)
     })
 
   }
   btnStrat.addEventListener('click', e =>{
-    // btnStrat.setAttribute("disabled", "disabled")
-    counter();
+    if(seconds.timer === 0 & minutes.timer === 0 & hours.timer === 0){
+      alert('задайте время время')
+    }else{
+      counter();
+    }
   })
-
 }
 
 
